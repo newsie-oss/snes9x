@@ -3767,7 +3767,7 @@ static bool8 ReadUPSPatch (Stream *r, long, int32 &rom_size)
 	//4-byte header + 1-byte input size + 1-byte output size + 4-byte patch CRC32 + 4-byte unpatched CRC32 + 4-byte patched CRC32
 	if(size < 18) { delete[] data; return false; }  //patch is too small
 
-	uint32 addr = 0;
+	uint32 addr_t = 0, &addr = addr_t;
 	if(data[addr++] != 'U') { delete[] data; return false; }  //patch has an invalid header
 	if(data[addr++] != 'P') { delete[] data; return false; }  //...
 	if(data[addr++] != 'S') { delete[] data; return false; }  //...
